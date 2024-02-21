@@ -1,0 +1,19 @@
+{
+    "name": "rgdev/woocommerceapiphp",
+    "description": "Scripting reference de la API de Woocommerce con PHP",
+    "license": "libre",
+    "autoload": {
+        "psr-4": {
+            "Rgdev\\Woocommerceapiphp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yester",
+            "email": "yesterdiscord7@gmail.com"
+        }
+    ],
+    "require": {
+        "automattic/woocommerce": "^3.1"
+    }
+}
