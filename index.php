@@ -8,10 +8,10 @@
 <body>
 
 <?php
-//instalar composer
+//Instalar composer
 //composer init
-//todo yes
-//composer require automattic/woocommerce
+//Todo yes
+//Composer require automattic/woocommerce
     require __DIR__ . '/vendor/autoload.php';
     use Automattic\WooCommerce\Client;
     $woocommerce = new Client(
@@ -24,43 +24,43 @@
             'query_string_auth' => true
         ]
     );
-    //toda la informacion sobre la base de datos y la API en https://woocommerce.github.io/woocommerce-rest-api-docs/?php 
+    //Toda la informacion sobre la base de datos y la API en https://woocommerce.github.io/woocommerce-rest-api-docs/?php 
 ?>
 
 
 <?php
     //RECOGER DATOS
-    $data = json_encode($woocommerce->get('products'));//especificar que base de datos recoger
+    $data = json_encode($woocommerce->get('products'));//Especificar que base de datos recoger
     $data = json_decode($data, true); 
 ?>
 <ul>
-<?php foreach ($data as $row) : ?><!--devuelve un array con cada entrada de x cosa, por lo tanto esto lo recorre en un bucle (cada item por iteracion)-->
-<li><?= $row['name'] ?> : <?= $row['id'] ?></li><!--recoger una propiedad en especifico y ponerla en el html-->
+<?php foreach ($data as $row) : ?><!--Devuelve un array con cada entrada de x cosa, por lo tanto esto lo recorre en un bucle (cada item por iteracion)-->
+<li><?= $row['name'] ?> : <?= $row['id'] ?></li><!--Recoger una propiedad en especifico y ponerla en el html-->
 <?php endforeach; ?>
 </ul>
 <?php
-    print_r($woocommerce->get('products/17'));//para sacar los datos de un producto concreto a partir de su ID
+    print_r($woocommerce->get('products/17'));//Para sacar los datos de un producto concreto a partir de su ID
 ?>
 
 
 <?php
     //CAMBIAR DATOS
-    $data = [//payload con los nuevos datos (mirar cada atributo)
+    $data = [//Payload con los nuevos datos (mirar cada atributo)
         'regular_price' => '24.54'
     ];
-    $woocommerce->put('products/17', $data);//subir el payload a cierto producto(o lo que sea) usando su ID, una respuesta de esta funcion indica que fue todo bien
+    $woocommerce->put('products/17', $data);//Subir el payload a cierto producto(o lo que sea) usando su ID, una respuesta de esta funcion indica que fue todo bien
 ?>
 
 
 <?php
     //BORRAR ENTRADA
-    $woocommerce->delete('products/17', ['force' => true]);//borrar cierto producto(o la entrada que sea) usando su ID, una respuesta de esta funcion indica que fue todo bien
+    $woocommerce->delete('products/17', ['force' => true]);//Borrar cierto producto(o la entrada que sea) usando su ID, una respuesta de esta funcion indica que fue todo bien
 ?>
 
 
 <?php
     //CREAR ENTRADA
-    $data = [//payload con los datos minimos para crear el producto (o lo que sea)
+    $data = [//Payload con los datos minimos para crear el producto (o lo que sea)
         'name' => 'Premium Quality',
         'type' => 'simple',
         'regular_price' => '21.99',
